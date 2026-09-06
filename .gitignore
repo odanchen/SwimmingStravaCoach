@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# .NET build output
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+
+# JavaScript dependencies and builds
+**/node_modules/
+**/dist/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+**/appsettings.Local.json
+**/appsettings.*.Local.json
+
+# Logs
+*.log
