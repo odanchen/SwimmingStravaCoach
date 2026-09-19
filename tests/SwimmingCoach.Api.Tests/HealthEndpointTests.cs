@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http.Json;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace SwimmingCoach.Api.Tests;
@@ -10,7 +11,14 @@ public class HealthEndpointTests : IClassFixture<WebApplicationFactory<Program>>
 
     public HealthEndpointTests(WebApplicationFactory<Program> application)
     {
-        _client = application.CreateClient();
+        _client = application
+            .WithWebHostBuilder(builder =>
+            {
+                builder.UseSetting(
+                    "ConnectionStrings:DefaultConnection",
+                    "Server=localhost;Database=test;User=test;Password=test;");
+            })
+            .CreateClient();
     }
 
     [Fact]
