@@ -15,6 +15,22 @@ A personal AI-assisted endurance coaching application focused initially on swimm
 - .NET 10 SDK
 - Node.js 22 or later
 - npm
+- Docker Desktop
+
+## Configure Google sign-in
+
+Create a Google OAuth client with the **Web application** type and add this exact authorized redirect URI:
+
+```text
+http://localhost:5038/signin-google
+```
+
+Store its credentials in .NET's local user-secrets store (they are not written to this repository):
+
+```bash
+dotnet user-secrets set "Authentication:Google:ClientId" "YOUR_CLIENT_ID" --project src/SwimmingCoach.Api
+dotnet user-secrets set "Authentication:Google:ClientSecret" "YOUR_CLIENT_SECRET" --project src/SwimmingCoach.Api
+```
 
 ## Build the backend
 
